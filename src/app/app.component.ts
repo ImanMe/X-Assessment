@@ -3,23 +3,26 @@ import { Component, HostListener, ElementRef } from "@angular/core";
 @Component({
   selector: "app-root",
   templateUrl: "./app.component.html",
-  styleUrls: ["./app.component.css"]
+  styleUrls: ["./app.component.scss"]
 })
+
 export class AppComponent {
   title = "xello-assessment";
   isTooltip1Close: boolean = true;
   isTooltip2Close: boolean = true;
   tooltipText: string;
 
-  constructor(private eRef: ElementRef) {}
+  constructor() {}
 
-  toggleTooltip1() {
+  toggleTooltip1($event:Event) {           
+    $event.stopPropagation();     
     this.isTooltip1Close = !this.isTooltip1Close;
-    this.isTooltip2Close = true;
-    this.tooltipText = "This is some serious information!";
+    this.isTooltip2Close = true;      
+    this.tooltipText = "This is some serious information!";       
   }
 
-  toggleTooltip2() {
+  toggleTooltip2($event: Event) {
+    $event.stopPropagation();
     this.isTooltip2Close = !this.isTooltip2Close;
     this.isTooltip1Close = true;
     this.tooltipText = "Nothing important here..not really!";
@@ -27,13 +30,5 @@ export class AppComponent {
 
   onScape() {
     this.isTooltip1Close = this.isTooltip2Close = true;
-  }
-
-  @HostListener("document:click", ["$event", "$event.target"])
-  onClick(event: MouseEvent, targetElement: HTMLElement): void {
-    if (!targetElement) return;
-
-    const clickedInside = this.eRef.nativeElement.contains(targetElement);
-    if (!clickedInside) this.isTooltip1Close = this.isTooltip2Close = true;
-  }
+  }   
 }

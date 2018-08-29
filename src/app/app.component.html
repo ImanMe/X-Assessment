@@ -1,24 +1,23 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div (click)="onClick($event, $event.target)" (keyUp.escape)="onScape()">
-  <div class="container">
-    <!-- <div class="row">
-      <div class="col-md-12">
-        <h1 class="text-center">Xello Assessment!</h1>
-        <hr>
-      </div>
-    </div> -->
+<div (keyUp.escape)="onScape()">
+  <div class="container mt-5">
     <div class="row">
-      <div class="col-md-3"></div>
-      <div class="col-md-3 text-center">
-        <button class="btn btn-dark" (click)="toggleTooltip1($event)">I'm a button!</button>
-        <app-tootip [isTooltipVisible]="isTooltip1Close" [tooltipText]="tooltipText">
-        </app-tootip>
+      <div class="col-sm-12 text-center">
+        <div class="d-inline-block">
+          <div class="d-inline-block position-relative mr-2">
+            <button class="btn btn-primary" (click)="toggleTooltip1($event)">I'm a button!</button>
+            <div class="position-absolute" style="right:0;left:0">
+              <app-tootip [(isTooltipVisible)]="isTooltip1Close" [tooltipText]="tooltipText">
+              </app-tootip>
+            </div>
+          </div>
+          <div class="d-inline-block position-relative">
+            <button class="btn btn-primary" (click)="toggleTooltip2($event)">I'm a button too!</button>
+            <div class="position-absolute" style="right:0;left:0">
+              <app-tootip [(isTooltipVisible)]="isTooltip2Close" [tooltipText]="tooltipText"></app-tootip>
+            </div>            
+          </div>
+        </div>
       </div>
-      <div class="col-md-3 text-center">
-        <button class="btn btn-dark" (click)="toggleTooltip2($event)">I'm a button too!</button>
-        <app-tootip [isTooltipVisible]="isTooltip2Close" [tooltipText]="tooltipText"></app-tootip>
-      </div>
-      <div class="col-md-3"></div>
     </div>
     <div class="row">
       <div class="col-md-12">
